@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Okay Khushi... 🐼</title>
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            min-height: 100vh;
+
+            overflow: hidden;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #74334f;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    #ffe8f1,
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    #ffc5dc,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ffdbea,
+                    #ffb8d5,
+                    #ffd8e8
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 15px;
+        }
+
+
+        /* =========================================
+           FLOATING BACKGROUND
+        ========================================= */
+
+        .background {
+
+            position: fixed;
+
+            inset: 0;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        .particle {
+
+            position: absolute;
+
+            bottom: -40px;
+
+            opacity: 0;
+
+            animation:
+                floatUp
+                linear
+                forwards;
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg)
+                    scale(.7);
+
+                opacity: 0;
+
+            }
+
+            15% {
+
+                opacity: .7;
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(-115vh)
+                    rotate(360deg)
+                    scale(1.1);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           MAIN CARD
+        ========================================= */
+
+        .quiz-card {
+
+            width:
+                min(
+                    650px,
+                    100%
+                );
+
+            height: 96vh;
+
+            max-height: 96vh;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .38
+                );
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .55
+                );
+
+            border-radius: 32px;
+
+            padding:
+                18px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    180,
+                    40,
+                    100,
+                    .18
+                );
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           SMALL TITLE
+        ========================================= */
+
+        .small-title {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: #b43e70;
+
+            margin-bottom: 3px;
+        }
+
+
+        /* =========================================
+           MAIN TITLE
+        ========================================= */
+
+        h1 {
+
+            font-size:
+                clamp(
+                    27px,
+                    5vw,
+                    40px
+                );
+
+            color: #922d5a;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================================
+           GIF
+        ========================================= */
+
+        .gif-wrapper {
+
+            width: 190px;
+
+            height: 190px;
+
+            margin:
+                0 auto 4px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .gif-wrapper img {
+
+            max-width: 100%;
+
+            max-height: 100%;
+
+            object-fit: contain;
+
+            border-radius: 20px;
+
+            filter:
+                drop-shadow(
+                    0 12px 20px
+                    rgba(
+                        180,
+                        40,
+                        100,
+                        .16
+                    )
+                );
+
+            transition:
+                opacity .25s ease,
+                transform .3s ease;
+        }
+
+
+        .gif-out {
+
+            opacity: 0;
+
+            transform:
+                scale(.8)
+                rotate(-4deg);
+        }
+
+
+        .gif-in {
+
+            animation:
+                gifIn
+                .45s
+                ease;
+        }
+
+
+        @keyframes gifIn {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(.75)
+                    rotate(4deg);
+
+            }
+
+            60% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.07)
+                    rotate(-2deg);
+
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0);
+            }
+        }
+
+
+        /* =========================================
+           QUESTION
+        ========================================= */
+
+        .question {
+
+            font-size:
+                clamp(
+                    17px,
+                    3.5vw,
+                    22px
+                );
+
+            font-weight: 700;
+
+            min-height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-bottom: 7px;
+
+            line-height: 1.25;
+        }
+
+
+        /* =========================================
+           ANSWERS
+        ========================================= */
+
+        .answers {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 9px;
+
+            margin-top: 2px;
+        }
+
+
+        .answer {
+
+            border: none;
+
+            border-radius: 16px;
+
+            padding:
+                11px 10px;
+
+            min-height: 52px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .78
+                );
+
+            color: #853557;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            border:
+                2px solid
+                rgba(
+                    255,
+                    137,
+                    181,
+                    .35
+                );
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .answer:hover {
+
+            transform:
+                translateY(-3px)
+                scale(1.02);
+
+            background:
+                #fff4f8;
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    190,
+                    50,
+                    110,
+                    .15
+                );
+        }
+
+
+        .answer:active {
+
+            transform:
+                scale(.96);
+        }
+
+
+        /* =========================================
+           REACTION
+        ========================================= */
+
+        .reaction {
+
+            min-height: 55px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin-top: 5px;
+
+            opacity: 0;
+
+            transform:
+                translateY(8px);
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease;
+        }
+
+
+        .reaction.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        .reaction-text {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            color: #a62f62;
+
+            margin-bottom: 2px;
+        }
+
+
+        .reaction-subtext {
+
+            font-size: 13px;
+
+            color: #8a4a65;
+        }
+
+
+        /* =========================================
+           NEXT BUTTON
+        ========================================= */
+
+        .next-button {
+
+            display: none;
+
+            margin:
+                6px auto 0;
+
+            padding:
+                11px 28px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3f91,
+                    #ff79b6
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    255,
+                    50,
+                    140,
+                    .25
+                );
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        .next-button:hover {
+
+            transform:
+                translateY(-3px)
+                scale(1.04);
+        }
+
+
+        .next-button.show {
+
+            display: inline-block;
+
+            animation:
+                buttonAppear
+                .4s
+                ease;
+        }
+
+
+        @keyframes buttonAppear {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scale(.8);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress {
+
+            margin-top: 8px;
+
+            font-size: 12px;
+
+            color: #a05272;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           FINAL SCREEN
+        ========================================= */
+
+        .final-screen {
+
+            display: none;
+        }
+
+
+        .final-screen.show {
+
+            display: block;
+
+            animation:
+                finalAppear
+                .6s
+                ease;
+        }
+
+
+        @keyframes finalAppear {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    scale(.9);
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+
+        .final-screen h2 {
+
+            font-size:
+                clamp(
+                    30px,
+                    7vw,
+                    48px
+                );
+
+            color: #a32e62;
+
+            margin-bottom: 12px;
+        }
+
+
+        .final-screen p {
+
+            font-size: 18px;
+
+            line-height: 1.5;
+
+            color: #7d3d5b;
+
+            margin-bottom: 20px;
+        }
+
+
+        .continue-button {
+
+            border: none;
+
+            border-radius: 50px;
+
+            padding:
+                14px 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff3f91,
+                    #ff79b6
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    255,
+                    50,
+                    140,
+                    .3
+                );
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (
+            max-width: 550px
+        ) {
+
+            body {
+
+                padding: 8px;
+            }
+
+
+            .quiz-card {
+
+                height: 97vh;
+
+                max-height: 97vh;
+
+                padding:
+                    12px 12px;
+
+                border-radius: 24px;
+            }
+
+
+            .small-title {
+
+                font-size: 13px;
+            }
+
+
+            h1 {
+
+                font-size: 28px;
+            }
+
+
+            .gif-wrapper {
+
+                width: 155px;
+
+                height: 155px;
+            }
+
+
+            .question {
+
+                font-size: 17px;
+
+                min-height: 45px;
+            }
+
+
+            .answers {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 7px;
+            }
+
+
+            .answer {
+
+                min-height: 45px;
+
+                padding:
+                    9px 8px;
+
+                font-size: 13px;
+            }
+
+
+            .reaction {
+
+                min-height: 50px;
+            }
+
+
+            .reaction-text {
+
+                font-size: 16px;
+            }
+
+
+            .reaction-subtext {
+
+                font-size: 12px;
+            }
+
+
+            .next-button {
+
+                padding:
+                    10px 25px;
+
+                font-size: 14px;
+            }
+
+        }
+
+
+        /* =========================================
+           VERY SMALL PHONES
+        ========================================= */
+
+        @media (
+            max-height: 700px
+        ) {
+
+            .gif-wrapper {
+
+                width: 125px;
+
+                height: 125px;
+            }
+
+
+            .quiz-card {
+
+                padding:
+                    8px 12px;
+            }
+
+
+            h1 {
+
+                font-size: 25px;
+            }
+
+
+            .question {
+
+                min-height: 38px;
+
+                font-size: 16px;
+            }
+
+
+            .answer {
+
+                min-height: 40px;
+
+                padding:
+                    7px;
+            }
+
+
+            .reaction {
+
+                min-height: 43px;
+
+                margin-top: 2px;
+            }
+
+
+            .reaction-text {
+
+                font-size: 15px;
+            }
+
+
+            .progress {
+
+                margin-top: 4px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         FLOATING BACKGROUND
+    ========================================== -->
+
+    <div
+        class="background"
+        id="background"
+    ></div>
+
+
+    <!-- =========================================
+         QUIZ CARD
+    ========================================== -->
+
+    <main
+        class="quiz-card"
+        id="quizCard"
+    >
+
+
+        <div class="small-title">
+            🐼 KHUSHI QUIZ 🐼
+        </div>
+
+
+        <h1>
+            Okay Khushi... 😈
+        </h1>
+
+
+        <!-- GIF -->
+
+        <div class="gif-wrapper">
+
+            <img
+                id="reactionGif"
+                src="assets/gifs/panda7.gif"
+                alt="Panda reaction"
+            >
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div
+            class="question"
+            id="question"
+        ></div>
+
+
+        <!-- ANSWERS -->
+
+        <div
+            class="answers"
+            id="answers"
+        ></div>
+
+
+        <!-- REACTION -->
+
+        <div
+            class="reaction"
+            id="reaction"
+        >
+
+            <div
+                class="reaction-text"
+                id="reactionText"
+            ></div>
+
+            <div
+                class="reaction-subtext"
+                id="reactionSubtext"
+            ></div>
+
+        </div>
+
+
+        <!-- NEXT -->
+
+        <button
+            class="next-button"
+            id="nextButton"
+        >
+            NEXT → 💗
+        </button>
+
+
+        <!-- PROGRESS -->
+
+        <div
+            class="progress"
+            id="progress"
+        ></div>
+
+
+        <!-- FINAL -->
+
+        <div
+            class="final-screen"
+            id="finalScreen"
+        >
+
+            <h2>
+                YOU SURVIVED 😂
+            </h2>
+
+            <p>
+                Okay... maybe you know me
+                better than I thought. 👀
+            </p>
+
+            <button
+                class="continue-button"
+                onclick="goToPage3()"
+            >
+                CONTINUE 💗
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           QUESTIONS
+        ========================================= */
+
+        const questions = [
+
+            {
+                question:
+                    "Okay Khushi... what's my most annoying habit? 💀",
+
+                answers: [
+
+                    {
+                        text:
+                            "Overthinking everything 🧠",
+
+                        gif:
+                            "q1thinking.gif",
+
+                        reaction:
+                            "BRO... REALLY? 😭",
+
+                        sub:
+                            "Okay, that's actually accurate."
+                    },
+
+                    {
+                        text:
+                            "Replying late 📱",
+
+                        gif:
+                            "q1waiting.gif",
+
+                        reaction:
+                            "YOU DID NOT JUST SAY THAT 💀",
+
+                        sub:
+                            "I prefer the term 'strategic replying.'"
+                    },
+
+                    {
+                        text:
+                            "Being unnecessarily dramatic 🎭",
+
+                        gif:
+                            "q1dramatic.gif",
+
+                        reaction:
+                            "EXCUSE ME?! 😭",
+
+                        sub:
+                            "Me? Dramatic? Never."
+                    },
+
+                    {
+                        text:
+                            "All of the above 😭",
+
+                        gif:
+                            "q1dead.gif",
+
+                        reaction:
+                            "💀 I KNEW YOU'D PICK THIS",
+
+                        sub:
+                            "At least you're honest."
+                    }
+
+                ]
+            },
+
+
+            {
+                question:
+                    "Be honest... who is more dramatic? 👀",
+
+                answers: [
+
+                    {
+                        text:
+                            "Obviously you 😌",
+
+                        gif:
+                            "q2Smug.gif",
+
+                        reaction:
+                            "LOOK AT YOU BEING CONFIDENT 😌",
+
+                        sub:
+                            "I respect the confidence."
+                    },
+
+                    {
+                        text:
+                            "Obviously me 😭",
+
+                        gif:
+                            "q2Shocked.gif",
+
+                        reaction:
+                            "WAIT... YOU ADMITTED IT?! 😱",
+
+                        sub:
+                            "Character development."
+                    },
+
+                    {
+                        text:
+                            "Both of us 💀",
+
+                        gif:
+                            "q2fighting panda.gif",
+
+                        reaction:
+                            "NOW THIS IS ACCURATE 😂",
+
+                        sub:
+                            "Two dramatic people. One friendship."
+                    },
+
+                    {
+                        text:
+                            "I'm not answering this 😂",
+
+                        gif:
+                            "q2Scared.gif",
+
+                        reaction:
+                            "RUNNING AWAY FROM THE TRUTH? 😭",
+
+                        sub:
+                            "Interesting strategy, Khushi."
+                    }
+
+                ]
+            },
+
+
+            {
+                question:
+                    "If I suddenly disappear for 6 hours, what are you most likely to think? 📱",
+
+                answers: [
+
+                    {
+                        text:
+                            "He's sleeping 😴",
+
+                        gif:
+                            "q3Sleepingpanda.gif",
+
+                        reaction:
+                            "YOU KNOW ME TOO WELL 😴",
+
+                        sub:
+                            "Honestly... probably."
+                    },
+
+                    {
+                        text:
+                            "He's busy",
+
+                        gif:
+                            "q3Working.gif",
+
+                        reaction:
+                            "LOOK AT YOU GIVING ME THE BENEFIT OF THE DOUBT 😂",
+
+                        sub:
+                            "That's actually nice of you."
+                    },
+
+                    {
+                        text:
+                            "Something happened 💀",
+
+                        gif:
+                            "q3Panicking.gif",
+
+                        reaction:
+                            "WHY ARE WE PANICKING?! 😭",
+
+                        sub:
+                            "I promise I'm probably just sleeping."
+                    },
+
+                    {
+                        text:
+                            "Finally, some peace 😂",
+
+                        gif:
+                            "q3Happy.gif",
+
+                        reaction:
+                            "WOW. JUST WOW. 💀",
+
+                        sub:
+                            "So that's how you really feel?"
+                    }
+
+                ]
+            },
+
+
+            {
+                question:
+                    "We are stuck in a zombie apocalypse. Who survives longer? 🧟",
+
+                answers: [
+
+                    {
+                        text:
+                            "Me 😎",
+
+                        gif:
+                            "q4Hero.gif",
+
+                        reaction:
+                            "THE CONFIDENCE 😎",
+
+                        sub:
+                            "Okay superhero."
+                    },
+
+                    {
+                        text:
+                            "You 🗿",
+
+                        gif:
+                            "q4Strong.gif",
+
+                        reaction:
+                            "FINALLY SOME RESPECT 💪",
+
+                        sub:
+                            "I knew you'd choose wisely."
+                    },
+
+                    {
+                        text:
+                            "Neither of us 💀",
+
+                        gif:
+                            "q4Dead.gif",
+
+                        reaction:
+                            "AT LEAST WE'LL DIE TOGETHER 💀",
+
+                        sub:
+                            "Friendship goals, I guess?"
+                    },
+
+                    {
+                        text:
+                            "I'll sacrifice you first 😭",
+
+                        gif:
+                            "q4Evil.gif",
+
+                        reaction:
+                            "KHUSHI?! 😭",
+
+                        sub:
+                            "I am remembering this."
+                    }
+
+                ]
+            },
+
+
+            {
+                question:
+                    "Okay, enough roasting me... 😭 What do you think I appreciate the most about you?",
+
+                answers: [
+
+                    {
+                        text:
+                            "That you listen",
+
+                        gif:
+                            "q5Cute.gif",
+
+                        reaction:
+                            "AWW... 🥺",
+
+                        sub:
+                            "That's actually really sweet."
+                    },
+
+                    {
+                        text:
+                            "That you stay",
+
+                        gif:
+                            "q5Emotional.gif",
+
+                        reaction:
+                            "OKAY... THAT ONE HIT 🥹",
+
+                        sub:
+                            "Moving on before this gets emotional."
+                    },
+
+                    {
+                        text:
+                            "That you tolerate my nonsense 💀",
+
+                        gif:
+                            "q5Happy.gif",
+
+                        reaction:
+                            "HONESTLY... YES 😂",
+
+                        sub:
+                            "You deserve an award."
+                    },
+
+                    {
+                        text:
+                            "All of the above 🥹",
+
+                        gif:
+                            "q5hugging.gif",
+
+                        reaction:
+                            "OKAY KHUSHI... 🥹🫂",
+
+                        sub:
+                            "Maybe you do know me after all."
+                    }
+
+                ]
+            }
+
+        ];
+
+
+        /* =========================================
+           STATE
+        ========================================= */
+
+        let currentQuestion = 0;
+
+        let answered = false;
+
+
+        /* =========================================
+           ELEMENTS
+        ========================================= */
+
+        const gif =
+            document.getElementById(
+                "reactionGif"
+            );
+
+        const question =
+            document.getElementById(
+                "question"
+            );
+
+        const answers =
+            document.getElementById(
+                "answers"
+            );
+
+        const reaction =
+            document.getElementById(
+                "reaction"
+            );
+
+        const reactionText =
+            document.getElementById(
+                "reactionText"
+            );
+
+        const reactionSubtext =
+            document.getElementById(
+                "reactionSubtext"
+            );
+
+        const nextButton =
+            document.getElementById(
+                "nextButton"
+            );
+
+        const progress =
+            document.getElementById(
+                "progress"
+            );
+
+        const finalScreen =
+            document.getElementById(
+                "finalScreen"
+            );
+
+
+        /* =========================================
+           LOAD QUESTION
+        ========================================= */
+
+        function loadQuestion() {
+
+            answered = false;
+
+
+            const data =
+                questions[
+                    currentQuestion
+                ];
+
+
+            question.textContent =
+                data.question;
+
+
+            progress.textContent =
+                `Question ${
+                    currentQuestion + 1
+                } of ${
+                    questions.length
+                }`;
+
+
+            answers.innerHTML =
+                "";
+
+
+            reaction.classList.remove(
+                "show"
+            );
+
+
+            nextButton.classList.remove(
+                "show"
+            );
+
+
+            data.answers.forEach(
+                (answer) => {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.className =
+                        "answer";
+
+
+                    button.textContent =
+                        answer.text;
+
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            chooseAnswer(
+                                answer,
+                                button
+                            );
+
+                        }
+                    );
+
+
+                    answers.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           CHOOSE ANSWER
+        ========================================= */
+
+        function chooseAnswer(
+            answer,
+            clickedButton
+        ) {
+
+            if (answered) {
+
+                return;
+
+            }
+
+
+            answered = true;
+
+
+            /* Disable answers */
+
+            document
+                .querySelectorAll(
+                    ".answer"
+                )
+                .forEach(
+                    (button) => {
+
+                        button.disabled =
+                            true;
+
+                    }
+                );
+
+
+            /* Highlight answer */
+
+            clickedButton.style.background =
+                "#ffe4ef";
+
+
+            clickedButton.style.transform =
+                "scale(1.03)";
+
+
+            /* GIF transition */
+
+            gif.classList.add(
+                "gif-out"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    gif.src =
+                        "assets/gifs/" +
+                        answer.gif;
+
+
+                    gif.classList.remove(
+                        "gif-out"
+                    );
+
+
+                    gif.classList.remove(
+                        "gif-in"
+                    );
+
+
+                    void gif.offsetWidth;
+
+
+                    gif.classList.add(
+                        "gif-in"
+                    );
+
+                },
+                220
+            );
+
+
+            /* Reaction */
+
+            reactionText.textContent =
+                answer.reaction;
+
+
+            reactionSubtext.textContent =
+                answer.sub;
+
+
+            setTimeout(
+                () => {
+
+                    reaction.classList.add(
+                        "show"
+                    );
+
+                    nextButton.classList.add(
+                        "show"
+                    );
+
+                },
+                300
+            );
+
+        }
+
+
+        /* =========================================
+           NEXT BUTTON
+        ========================================= */
+
+        nextButton.addEventListener(
+            "click",
+            () => {
+
+                currentQuestion++;
+
+
+                if (
+                    currentQuestion >=
+                    questions.length
+                ) {
+
+                    showFinal();
+
+                    return;
+
+                }
+
+
+                loadQuestion();
+
+            }
+        );
+
+
+        /* =========================================
+           FINAL SCREEN
+        ========================================= */
+
+        function showFinal() {
+
+            question.style.display =
+                "none";
+
+
+            answers.style.display =
+                "none";
+
+
+            reaction.style.display =
+                "none";
+
+
+            nextButton.style.display =
+                "none";
+
+
+            progress.style.display =
+                "none";
+
+
+            gif.src =
+                "assets/gifs/q5hugging.gif";
+
+
+            finalScreen.classList.add(
+                "show"
+            );
+
+
+            createFinalParticles();
+
+        }
+
+
+        /* =========================================
+           PAGE 3
+        ========================================= */
+
+        function goToPage3() {
+
+            window.location.href =
+                "page3.html";
+
+        }
+
+
+        /* =========================================
+           FLOATING PARTICLES
+        ========================================= */
+
+        const symbols = [
+
+            "🌸",
+            "🌷",
+            "💗",
+            "💕",
+            "✨",
+            "💖"
+
+        ];
+
+
+        function createParticle() {
+
+            const particle =
+                document.createElement(
+                    "div"
+                );
+
+
+            particle.className =
+                "particle";
+
+
+            particle.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            particle.style.left =
+                Math.random() *
+                100 +
+                "%";
+
+
+            particle.style.fontSize =
+                (
+                    15 +
+                    Math.random() *
+                    20
+                ) +
+                "px";
+
+
+            const duration =
+                7 +
+                Math.random() *
+                7;
+
+
+            particle.style.animationDuration =
+                duration +
+                "s";
+
+
+            document
+                .getElementById(
+                    "background"
+                )
+                .appendChild(
+                    particle
+                );
+
+
+            setTimeout(
+                () => {
+
+                    particle.remove();
+
+                },
+                (duration + 1) * 1000
+            );
+
+        }
+
+
+        /* Start particles */
+
+        setInterval(
+            createParticle,
+            700
+        );
+
+
+        for (
+            let i = 0;
+            i < 6;
+            i++
+        ) {
+
+            setTimeout(
+                createParticle,
+                i * 250
+            );
+
+        }
+
+
+        /* =========================================
+           INITIALIZE
+        ========================================= */
+
+        loadQuestion();
+
+    </script>
+
+</body>
+
+</html>
